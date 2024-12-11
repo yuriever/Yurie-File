@@ -1,0 +1,4 @@
+{"paperName" -> {0, {"IncludePreprint"}}, 
+ "paperNameQ" -> {0, {"IncludePreprint"}}, "paperNameRename" -> 
+  {0, {"OnlyShowRenamedPaper"}}, "exportImage" -> 
+  {0, {"SVGStylesheet", "SVGSizeInfo"}}}
