@@ -9,7 +9,7 @@ BeginPackage["Yurie`File`paperName`"];
 
 Needs["Yurie`File`"];
 
-Needs["Yurie`File`Info`"];
+Needs["Yurie`File`Info`"]//Quiet;
 
 
 (* ::Section:: *)
