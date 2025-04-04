@@ -1,7 +1,9 @@
-.gitattributes
-
 # Mac files
 .DS_Store
+
+# VSCode files
+.VSCodeCounter
+.vscode
 
 # Eclipse files
 .project
@@ -10,4 +12,3 @@
 
 # developer directory
 Workbench
-TestSource
