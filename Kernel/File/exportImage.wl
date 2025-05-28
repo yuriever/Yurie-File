@@ -136,7 +136,6 @@ setStylesheetOfSVG[stylesheet_] :=
                     feObj
                 ]
             ];
-        Print["test"]
     );
 
 
