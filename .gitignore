@@ -1,14 +1,9 @@
-# Mac files
+# macOS system files
 .DS_Store
 
-# VSCode files
-.VSCodeCounter
-.vscode
+# VSCode settings
+.vscode/
 
-# Eclipse files
-.project
-.metadata
-.settings
-
-# developer directory
-Workbench
+# Developer workspace
+Workbench/
+TestSource/
