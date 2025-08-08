@@ -1,45 +1,46 @@
-# Yurie/File
+# [Yurie/File](https://github.com/yuriever/Yurie-File)
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Wolfram Language](https://img.shields.io/badge/Wolfram%20Language-14.3%2B-red.svg)](https://www.wolfram.com/language/)
 
 File operation.
 
+
 ## Documentation
 
-## Install
 
-Install from this repository:
+## Usage
 
-1. download the built paclet `build/*.paclet`;
+1. Clone or download this repository
 
-2. install the paclet:
+2. Move the entire folder to the user paclet directory:
 
-    ``` wl
-    PacletInstall@File["the/path/of/paclet"]
+   ```wl
+   $UserBasePacletsDirectory
+   ```
+
+3. Rebuild the paclet data:
+
+   ```wl
+   PacletDataRebuild[]
+   ```
+
+4. Load the paclet
+
+    ```wl
+    Needs["Yurie`File`"]
     ```
 
-Install manually:
 
-1. download this repository, and move it to the paclet directory `$UserBasePacletsDirectory`;
+### Uninstallation
 
-2. rebuild the internal paclet data:
-
-    ``` wl
-    PacletDataRebuild[]
-    ```
-
-## Load
-
-``` wl
-Needs["Yurie`File`"]
-```
-
-## Upgrade
-
-``` wl
-PacletInstall["Yurie/File"]
-```
-
-## Uninstall
-
-``` wl
+```wl
 PacletUninstall["Yurie/File"]
+```
+
+
+### Installation checking
+
+```wl
+PacletFind["Yurie/File"]
 ```
