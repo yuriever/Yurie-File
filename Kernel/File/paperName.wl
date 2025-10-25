@@ -72,7 +72,7 @@ paperName//Options =
     {"IncludePreprint"->True};
 
 paperName[str_String,OptionsPattern[]] :=
-    Module[ {name},
+    Module[{name},
         name =
             str//StringTrim//replaceSpecialCharacter//regulateTitleAndAuthor[OptionValue["IncludePreprint"]]//
                 correctSpecialWord//RemoveDiacritics//StringTrim;
@@ -99,7 +99,7 @@ paperNameRename//Options =
     {"OnlyShowRenamedPaper"->True};
 
 paperNameRename[dir_?DirectoryQ,OptionsPattern[]] :=
-    Module[ {paperData,paperWithoutAuthor,res},
+    Module[{paperData,paperWithoutAuthor,res},
         paperData =
             findInFolder[file__/;DirectoryQ[file]||StringMatchQ[file,__~~".pdf"|".djvu"]]@dir;
         paperWithoutAuthor =
@@ -112,22 +112,22 @@ paperNameRename[dir_?DirectoryQ,OptionsPattern[]] :=
             paperData//Query[Select[paperNameQ[#FileName,"IncludePreprint"->False]&]]//
                 Query[All,<|"NewName"->paperName[#FileName],#|>&]//
                     Query[All,(
-                        If[ #FileName=!=#NewName,
+                        If[#FileName=!=#NewName,
                             RenameFile[#File,FileNameJoin@{#Directory[[1]],#NewName<>fileExtensionWithDot[#File]}]
                         ];
                         <|"IsRenamed"->(#FileName=!=#NewName),#|>
                     )&]//
                         Query[ReverseSortBy[#IsRenamed&]];
-        If[ OptionValue["OnlyShowRenamedPaper"]===True,
+        If[OptionValue["OnlyShowRenamedPaper"]===True,
             res = res//Query[Select[#IsRenamed===True&]]
         ];
         CellPrint@{
-            If[ paperWithoutAuthor=!={},
+            If[paperWithoutAuthor=!={},
                 ExpressionCell[paperWithoutAuthor//Dataset,"Output"],
                 (*Else*)
                 Nothing
             ],
-            If[ res=!={},
+            If[res=!={},
                 ExpressionCell[res//Dataset,"Output"],
                 (*Else*)
                 Nothing
@@ -154,7 +154,7 @@ replaceSpecialCharacter[str_] :=
 
 
 regulateTitleAndAuthor[dealPreprint_][str_] :=
-    Module[ {tagTitleAuthor,title,author},
+    Module[{tagTitleAuthor,title,author},
         tagTitleAuthor =
             str//trySplitPaperName[dealPreprint];
         title =
@@ -166,7 +166,7 @@ regulateTitleAndAuthor[dealPreprint_][str_] :=
 
 
 trySplitPaperName[dealPreprint_][str_] :=
-    Module[ {rule,cache},
+    Module[{rule,cache},
         rule =
             Switch[ dealPreprint,
                 False,
@@ -233,7 +233,7 @@ correctSpecialWord[str_] :=
 
 
 fileExtensionWithDot[file_] :=
-    If[ DirectoryQ[file],
+    If[DirectoryQ[file],
         "",
         (*Else*)
         "."<>FileExtension[file]

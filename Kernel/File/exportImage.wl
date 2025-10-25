@@ -57,7 +57,7 @@ exportImage//Options = {
 
 
 exportImage[imagePath_,opts:OptionsPattern[]][image_] :=
-    Module[ {format},
+    Module[{format},
         format =
             First@FileNameToFormatList@imagePath;
         Switch[format,
@@ -74,14 +74,14 @@ exportImage[imagePath_,opts:OptionsPattern[]][image_] :=
 
 
 exportSVG["SVG",imagePath_,image_,opts:OptionsPattern[]] :=
-    Module[ {imageString},
-        If[ OptionValue["SVGStylesheet"]=!=$SVGStylesheet,
+    Module[{imageString},
+        If[OptionValue["SVGStylesheet"]=!=$SVGStylesheet,
             setStylesheetOfSVG[OptionValue["SVGStylesheet"]]
         ];
         imageString =
             ExportString[image,"SVG",FilterRules[{opts,Options@exportSVG},Options@ExportString]]//
                 ifKeepSizeInfo[OptionValue["SVGSizeInfo"]];
-        If[ !FileExistsQ@imagePath,
+        If[!FileExistsQ@imagePath,
             CreateFile@imagePath
         ];
         (*OpenWrite will overwrite the existing data.*)
@@ -114,13 +114,13 @@ setStylesheetOfSVG[stylesheet_] :=
     (
         $SVGStylesheet = stylesheet;
         System`ConvertersDump`createVectorExportPacketExpr[ConvertersDump`expr_,ConvertersDump`opts___] :=
-            Module[ {feObj},
+            Module[{feObj},
                 System`ConvertersDump`Utilities`VerbosePrint[System`ConvertersDump`createVectorExportPacketExpr,"Generating VectorExportPacketExpr."];
-                If[ SameQ[Head@Unevaluated@ConvertersDump`expr,NotebookObject],
+                If[SameQ[Head@Unevaluated@ConvertersDump`expr,NotebookObject],
                     feObj = Evaluate@NotebookGet@ConvertersDump`expr,
                     feObj = BoxForm`FrontEndObject@Unevaluated@ConvertersDump`expr;
                 ];
-                If[ SameQ[feObj,$Failed],
+                If[SameQ[feObj,$Failed],
                     Notebook[
                         {
                             Cell[

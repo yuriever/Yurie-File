@@ -34,7 +34,7 @@ Begin["`Private`"];
 
 
 batchOpenSaveNotebook[nbList_List,pause_:0.5] :=
-    Module[ {nb,nbobj,counter = 0},
+    Module[{nb,nbobj,counter = 0},
         Monitor[
             Do[
                 counter = counter+1;
